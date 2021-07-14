@@ -1,0 +1,19 @@
+Negative Dictionary System
+
+a system that computes negative dictionaries (stopwords) for text corpuses and makes them available over http
+
+
+
+
+installation
+
+- pip install -r requirements.txt
+
+- cp config.json.example config.json
+
+
+
+usage: main.py [-h] {start,start_feeder}
+
+start               starts the system (server, updater, feeders)
+start_feeder        starts a specific feeder
