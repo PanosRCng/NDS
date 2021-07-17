@@ -8,17 +8,19 @@ class Stopwords:
 
 
     @staticmethod
-    def calculate(alias):
+    def calculate(alias, no_score=False):
 
         elasticsearch_index = Config.get('nds')['stopwords'][alias]['elasticsearch_index']
+
+        if no_score is True:
+            return [term['word'] for term in ESService.lexicon_terms(elasticsearch_index, max_terms=Config.get('nds')['stopwords'][alias]['max_terms'])]
 
         corpus_size = ESService.corpus_size(elasticsearch_index)
 
         terms = {}
-        for term in ESService.lexicon_terms(elasticsearch_index):
+        for term in ESService.lexicon_terms(elasticsearch_index, max_terms=Config.get('nds')['stopwords'][alias]['max_terms']):
             terms[term['word']] = TermInformativeness.normalised_idf(corpus_size, term['doc_count'])
 
-        sorted_terms = dict(sorted(terms.items(), key=lambda item: item[1]))
+        return terms
 
-        return list(sorted_terms.keys())[:Config.get('nds')['stopwords'][alias]['max_terms']]
 

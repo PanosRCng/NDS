@@ -26,7 +26,7 @@ class ESService:
 
 
     @staticmethod
-    def lexicon_terms(index_name):
+    def lexicon_terms(index_name, max_terms):
 
         body = {
             "size": 0,
@@ -34,7 +34,7 @@ class ESService:
                 "all_tokens": {
                     "terms": {
                         "field": "tokens",
-                        "size": ESService.lexicon_size(index_name)
+                        "size": max_terms
                     }
                 }
             }

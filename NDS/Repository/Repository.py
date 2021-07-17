@@ -93,7 +93,7 @@ class Repository:
 
     def __create(self, alias):
 
-        stoplist = Stoplist(alias, Stopwords.calculate(alias), str(self.__now_utc_timestamp()))
+        stoplist = Stoplist(alias, Stopwords.calculate(alias, no_score=True), str(self.__now_utc_timestamp()))
 
         FSStore.store(stoplist)
 
