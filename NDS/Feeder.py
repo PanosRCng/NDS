@@ -50,7 +50,7 @@ class Feeder:
 
             article = msg.value
 
-            tokens = tokenizer.tokenize(article['title'], tokens_min_length=2) + tokenizer.tokenize(article['content'], tokens_min_length=2)
+            tokens = tokenizer.tokenize(article['title'], tokens_min_length=3) + tokenizer.tokenize(article['content'], tokens_min_length=3)
 
             if len(tokens) < stopwords_config['text_min_tokens_number']:
                 continue

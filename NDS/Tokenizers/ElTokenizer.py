@@ -25,7 +25,7 @@ class ElTokenizer(Tokenizer):
         tokens = [token.strip() for token in text.split(' ') if token != '']
 
         if tokens_min_length is not None:
-            return [token for token in tokens if len(token) > tokens_min_length]
+            return [token for token in tokens if len(token) >= tokens_min_length]
 
         return tokens
 

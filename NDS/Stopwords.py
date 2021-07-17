@@ -1,6 +1,7 @@
 from Core.Config import Config
 from Core.ElasticSearch.ESService import ESService
 from Core.TermInformativeness import TermInformativeness
+from Core.Logger import Logger
 
 
 
@@ -11,6 +12,8 @@ class Stopwords:
     def calculate(alias, no_score=False):
 
         elasticsearch_index = Config.get('nds')['stopwords'][alias]['elasticsearch_index']
+
+        Logger.log(__name__, 'lexicon size: ' + str(ESService.lexicon_size(elasticsearch_index)))
 
         if no_score is True:
             return [term['word'] for term in ESService.lexicon_terms(elasticsearch_index, max_terms=Config.get('nds')['stopwords'][alias]['max_terms'])]
