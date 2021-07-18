@@ -20,7 +20,7 @@ class ESService:
             "size": 1
         }
 
-        res = ES.connection('es').search(index=index_name, body=body)
+        res = ES.connection('es').search(index=index_name, body=body, request_timeout=60)
 
         return res['hits']['total']['value']
 
@@ -40,7 +40,7 @@ class ESService:
             }
         }
 
-        res = ES.connection('es').search(index=index_name, body=body)
+        res = ES.connection('es').search(index=index_name, body=body, request_timeout=60)
 
         for term in res['aggregations']['all_tokens']['buckets']:
             yield {'word': term['key'], 'doc_count': term['doc_count']}
@@ -59,7 +59,7 @@ class ESService:
             }
         }
 
-        res = ES.connection('es').search(index=index_name, body=body)
+        res = ES.connection('es').search(index=index_name, body=body, request_timeout=60)
 
         return res['aggregations']['total_tokens']['value']
 
