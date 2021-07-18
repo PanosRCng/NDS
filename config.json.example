@@ -12,7 +12,7 @@
         "max_terms": 200,
         "tokenizer": "ElTokenizer",
         "text_min_tokens_number": 30,
-        "tokens_min_length": 2,
+        "tokens_min_length": 3,
         "feed_enabled": true
       }
     },

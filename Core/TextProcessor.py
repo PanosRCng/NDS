@@ -26,7 +26,7 @@ class TextProcessor:
 
     @staticmethod
     def remove_punctuations(text):
-        return text.translate(str.maketrans("’'[](){}⟨⟩:,،、‒-–.…!<>«»-?‘’“”'\";/⁄`", "                                    "))
+        return text.translate(str.maketrans("΄’'[](){}⟨⟩:,،、‒-–.…!<>«»-?‘’“”'\";/⁄`", "                                     "))
 
 
     @staticmethod
